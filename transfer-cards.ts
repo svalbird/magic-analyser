@@ -3,12 +3,18 @@ import JSONStream from 'JSONStream'
 const config = require('./server/db/knexfile').development
 const connection = require('knex')(config)
 
+//cursed program to import giant scryfall card info file
+
+//streaming used to not overwhelm RAM totally and utterly (it's like 2 gigs of JSON data)
 const stream = fs.createReadStream('english-cards.json', { encoding: 'utf8' })
 
 let counter = 1
 
+//setting up knex connection
 const db = connection
 
+//will only attempt to pass properties that exist to the db, otherwise it doesn't like that
+//This function verifies that the property exists, and if it doesn't then it passes it as a null
 function verifyProperty(obj: any, newObj: any, prop: string, propAlt?: string) {
   if (Object.prototype.hasOwnProperty.call(obj, prop)) {
     if (propAlt === undefined) {
@@ -19,7 +25,10 @@ function verifyProperty(obj: any, newObj: any, prop: string, propAlt?: string) {
   }
 }
 
+//i counted.
 const fileLines = 81146
+
+//generates chunks for the giant json
 const chunk: any[] = []
 async function insertChunk() {
   for (let i = 0; i < chunk.length; i++) {
@@ -27,6 +36,7 @@ async function insertChunk() {
   }
   console.log('All done!')
 }
+//on each line (which is a new card) it passes a new card into the database, adding all 'relevant' properties and only adding optional parameters where they exist
 async function parseFile() {
   stream.pipe(JSONStream.parse('*')).on('data', async function (data: any) {
     let newCard: any = {
@@ -95,7 +105,11 @@ async function parseFile() {
     counter++
   })
 }
+
+//it begins...
 parseFile()
+
+//for reference, the table schema
 /* table.increments('id').primary()
     table.string('unique_id')
     table.string('oracle_id')

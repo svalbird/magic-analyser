@@ -9,11 +9,15 @@ import useFetchDecks from './hooks/useFetchDecks'
 import LandProps from './LandProps'
 import ManaCurve from './ManaCurve'
 
-function DeckDisplayAll() {
-  const deckName = useParams().deckName as string
-  const { deck, loading, error, fetchDeck } = useFetchDecks(deckName)
-  const [selectCard, setSelectCard] = useState('')
+//Main deck info display container - subcomponents are in separate files
 
+function DeckDisplayAll() {
+  //grabbing deck name from route
+  const deckName = useParams().deckName as string
+  //loading hook for deck info, passed to child components
+  const { deck, loading, error, fetchDeck } = useFetchDecks(deckName)
+  //selected card on hover
+  const [selectCard, setSelectCard] = useState('')
   const onMouseover = (cardname: string) => {
     setSelectCard(cardname)
   }

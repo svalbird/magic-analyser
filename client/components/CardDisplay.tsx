@@ -6,9 +6,13 @@ interface Props {
   cardname: string
 }
 
-function CardDisplay(props: Props) {
-  let currentCard: cardInDeck | false = false
+//display for specific card on mouseover
+//mouseover behaviour is in parent component!
 
+function CardDisplay(props: Props) {
+  //setting typing for mouseover card, "off" by default
+  let currentCard: cardInDeck | false = false
+  //cardname used to call full card data
   currentCard = props.deck.find((card) => {
     return card.name === props.cardname
   }) as cardInDeck
@@ -20,6 +24,18 @@ function CardDisplay(props: Props) {
       </div>
     )
   }
+
+  //DISPLAY STRUCTURE (for reference)
+  //image
+  //card name, mana
+  //type
+  //oracle text
+  //power/toughness
+  //flavor text
+  //edhrec rank
+  //cost
+
+  //optional properties are loaded optionally with ternary
   return (
     <div>
       <Card className="sticky">

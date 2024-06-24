@@ -1,4 +1,8 @@
 import { Card, Title, BarChart } from '@tremor/react'
+
+//Displays mana values as a bar graph
+//Currently not calculated
+//Will map counts of mana values from manacost property of cards
 const chartdata = [
   {
     name: 0,

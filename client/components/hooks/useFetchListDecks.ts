@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { loadAllDecks } from '../../api'
 
+//hook for api call to load all decknames in client when app is loaded
+//only calls decknames
+
 function useFetchListDecks() {
   const [deckList, setDeckList] = useState([] as string[])
   const [loading, setLoading] = useState(true as boolean)

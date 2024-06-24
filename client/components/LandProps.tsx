@@ -1,5 +1,9 @@
 import { Card, Title, Flex, CategoryBar, Text } from '@tremor/react'
 
+//Displays land distribution
+//currently not functional
+//will calculate land count vs. nonland count with array mapping by using type info
+
 function LandProps() {
   return (
     <div>

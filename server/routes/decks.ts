@@ -1,8 +1,12 @@
 import express from 'express'
 import { extractDeck, loadFullDeck, loadListOfDecks } from '../dataHandler'
 
+//API routes for db interaction
+//API calls are open for testing purposes
+
 const router = express.Router()
 
+//POST - import a deck
 router.post('/import', async (req, res) => {
   try {
     const deckName = req.body.name
@@ -22,6 +26,7 @@ router.post('/import', async (req, res) => {
   }
 })
 
+//GET - get a list of decks in db as json
 router.get('/alldecks', async (req, res) => {
   try {
     const decks = await loadListOfDecks()
@@ -35,6 +40,7 @@ router.get('/alldecks', async (req, res) => {
   }
 })
 
+//GET - get a specific deck and related info as json
 router.get('/:deckname', async (req, res) => {
   try {
     const deckName = req.params.deckname

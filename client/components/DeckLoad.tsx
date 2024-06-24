@@ -3,7 +3,9 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useFetchListDecks from './hooks/useFetchListDecks'
 
+//dropdown for selecting decks in database
 function DeckLoad() {
+  //calls hook for loading list of decks
   const { deckList, loading, error, fetchListDecks } = useFetchListDecks()
   const [deckName, setDeckName] = useState('')
   const navigate = useNavigate()
@@ -13,6 +15,7 @@ function DeckLoad() {
     navigate(path)
   }
 
+  //maps deck names into dropdown
   return (
     <div className="deckLoad absolute">
       <Card>

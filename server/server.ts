@@ -1,3 +1,4 @@
+//setting up server and routing
 import { join } from 'node:path'
 import express from 'express'
 import decks from './routes/decks'

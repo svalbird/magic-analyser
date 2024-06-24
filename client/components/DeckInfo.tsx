@@ -1,6 +1,8 @@
 import { Card, Metric, List, ListItem, Text } from '@tremor/react'
 import { cardInDeck } from '../../types/cardFull'
 
+//Displays the list of all cards in the deck w/ name and quantity
+
 interface Props {
   deck: cardInDeck[]
   isLoading: boolean
@@ -8,6 +10,7 @@ interface Props {
   hoverFunction?: any
 }
 function DeckInfo(props: Props) {
+  //loading wheel while loading
   if (props.isLoading) {
     return (
       <div>
@@ -22,6 +25,8 @@ function DeckInfo(props: Props) {
       </div>
     )
   }
+  //after loading
+  //uses map to quickly list all cards in deck
   return (
     <div>
       <Card className="h-full">

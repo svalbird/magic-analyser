@@ -1,3 +1,7 @@
+/*TYPES FOR CARDS*/
+
+/*Full card type - card properties are mandatory - used for passing in card data from scryfall jsons (will pass in empty strings on null data so provides error detection on json reading)*/
+
 export interface cardFull {
   unique_id: string
   oracle_id: string
@@ -24,6 +28,7 @@ export interface cardFull {
   price_usd: string
 }
 
+/*card typing will optional types - used for calls from client-side as some properties are optional on cards*/
 export interface cardInDeck {
   unique_id: string
   oracle_id: string

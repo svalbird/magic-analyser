@@ -4,11 +4,16 @@ import { useNavigate } from 'react-router-dom'
 import { ArrowDownTrayIcon, ArrowUpTrayIcon } from '@heroicons/react/24/solid'
 import useFetchListDecks from './hooks/useFetchListDecks'
 
+/*Main 'home' page to select a deck from*/
 function Home() {
+  //react hook to grab names of decks in db
   const { deckList, loading, error, fetchListDecks } = useFetchListDecks()
+  //selected deck in dropdown hook
   const [deckName, setDeckName] = useState('')
   const navigate = useNavigate()
 
+  //changes route on selection to specified deck
+  //currently decks can't be routed to directly but it provides useful distinction
   const routeChange = () => {
     const path = deckName
     navigate(`../${path}`)

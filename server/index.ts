@@ -1,4 +1,5 @@
 import server from './server'
+//server index for port
 
 const PORT = process.env.PORT || 3000
 
