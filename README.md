@@ -15,7 +15,7 @@ Don't, because the JSON transfer script takes 20-30 minutes and involves parsing
 But if you really wanted to:
  - clone the repository
  - use ```npm install``` to install dependencies
- - download the json file from scryfall [here](https://scryfall.com/docs/api/bulk-data) - save it in the repo directory
+ - download the "defualt cards" .json file from scryfall [here](https://scryfall.com/docs/api/bulk-data) - save it in the repo directory
  - use ```knex seed:run``` and ```knex migrate:latest``` to set up databases
  - run tsconfig.json to import the json file into the database
  - use ```npm run dev``` to run the client on port 3000
