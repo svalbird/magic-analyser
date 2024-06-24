@@ -4,3 +4,4 @@ npm-debug.log
 bundle.*
 all-cards.json
 english-cards.json
+dev.sqlite3
